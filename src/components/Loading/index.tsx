@@ -15,9 +15,11 @@ const Loading = ({ loadingState }: Component) => {
   if (!isError) {
     return (
       <S.Container>
-        <S.PokeballBorder>
-          <S.PokeBallButton />
-        </S.PokeballBorder>
+        <S.PokeBall>
+          <S.PokeballBorder>
+            <S.PokeBallButton />
+          </S.PokeballBorder>
+        </S.PokeBall>
       </S.Container>
     );
   } else {

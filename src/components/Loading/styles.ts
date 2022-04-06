@@ -20,12 +20,15 @@ export const anim = keyframes`
  100%{ transform: rotate(360deg); }
 `
 
+export const PokeBall = styled.div`
+    animation: ${anim} 2s linear infinite;
+`
+
 export const Container = styled.div`
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
-    animation: ${anim} 2s linear infinite;
 `
 
 export const PokeBallButton = styled.div`
