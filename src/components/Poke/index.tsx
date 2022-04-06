@@ -3,8 +3,11 @@ import formatName from './format'
 
 interface Component {
     name: string;
-    types: object[];
-    sprites: object;
+    types: (string | undefined)[];
+    sprites: {
+        front_default: string;
+        back_shiny: string;
+    };
 }
 
 const PokeProfile = ({ name, types, sprites }: Component) => {
@@ -16,7 +19,7 @@ const PokeProfile = ({ name, types, sprites }: Component) => {
             <S.BackSprite src={sprites.back_shiny} />
             <h1>{formatName(name)}</h1>
             <S.TypesWrapper>
-                {types.map((el, i) => <S.Type key={i}>{el.toUpperCase()}</S.Type>)}
+                {types.map((el, i) => <S.Type key={i}>{el?.toUpperCase()}</S.Type>)}
             </S.TypesWrapper>
         </S.Container>
     )
