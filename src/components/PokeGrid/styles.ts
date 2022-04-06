@@ -12,7 +12,7 @@ type Theme = {
   
   interface iProps {
     theme: Theme;
-    themeValue: keyof Theme;
+    themevalue: keyof Theme;
 }
 
 export const Container = styled.div`
@@ -38,11 +38,11 @@ export const Navigation = styled.div`
 
 export const PageRight = styled(FaRegArrowAltCircleRight)`
     cursor: pointer;
-    color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+    color:${({ theme, themevalue }: iProps) => theme[themevalue].colors.secondary};
     transition: all 1s ease-in-out;
 `
 export const PageLeft = styled(FaRegArrowAltCircleLeft)`
     cursor: pointer;
-    color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+    color:${({ theme, themevalue }: iProps) => theme[themevalue].colors.secondary};
     transition: all 1s ease-in-out;
 `

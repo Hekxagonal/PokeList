@@ -88,6 +88,7 @@ const PokeGrid = () => {
           {list.map((el, i) => {
             return (
               <PokeProfile
+                key={i}
                 name={el.name}
                 types={handleTypes(el.types)}
                 sprites={el.sprites}
@@ -97,8 +98,8 @@ const PokeGrid = () => {
           })}
         </S.PokeWrapper>
         <S.Navigation>
-          {pages.previous && <S.PageLeft themeValue={state.theme} onClick={() => handlePages(false)} size="50px" />}
-          {pages.next && <S.PageRight themeValue={state.theme} onClick={() => handlePages(true)} size="50px" />}
+          {pages.previous && <S.PageLeft themevalue={state.theme} onClick={() => handlePages(false)} size="50px" />}
+          {pages.next && <S.PageRight themevalue={state.theme} onClick={() => handlePages(true)} size="50px" />}
         </S.Navigation>
       </S.Container>
     );
