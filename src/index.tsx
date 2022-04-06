@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import Navbar from "./components/Navbar";
 import PokeGrid from "./components/PokeGrid";
 import { ThemeContextProvider } from "./contexts/theme";
-import GlobalStyles from "./global/styles";
+import GlobalStyles from "./global/styles/index";
 import theme from "./global/theme";
 import reportWebVitals from "./reportWebVitals";
 

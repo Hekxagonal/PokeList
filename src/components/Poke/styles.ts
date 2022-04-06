@@ -1,6 +1,21 @@
 import styled, { keyframes } from "styled-components";
 import { css } from "styled-components";
 
+type Theme = {
+  light: {
+    colors: { primary: string, secondary: string, background: string, box: string };
+  };
+  dark: {
+    colors: { primary: string, secondary: string, background: string, box: string };
+  };
+};
+
+interface iProps {
+  theme: Theme;
+  anim?: string;
+  themeValue: keyof Theme;
+}
+
 export const animationDelay = keyframes`
     0% { opacity: 0%; }
     100% { opacity: 100%; }
@@ -10,8 +25,6 @@ export const animationRed = keyframes`
     0% { filter: blur(1.5px) }
     100% { filter: blur(0px) }
 `
-
-type iProps = { anim: string }
 
 export const Container = styled.div`
   background: white;
@@ -26,10 +39,12 @@ export const Container = styled.div`
   width: 195px;
   height: 70px;
   animation: ${({ anim }: iProps) => anim}s ease-out 0s 1 ${animationDelay};
+  background-color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.box};
 `;
 
 export const PokeName = styled.h1`
   font-size: 15px;
+  color: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
 `
 
 export const TypesWrapper = styled.div`

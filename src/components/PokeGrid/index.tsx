@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../../contexts/theme";
 import Loading from "../Loading";
 import PokeProfile from "../Poke";
 import loadResults from "./load-results";
@@ -41,6 +42,7 @@ const PokeGrid = () => {
     isError: false,
     error: undefined,
   });
+  const {state} = useContext(ThemeContext)
 
   useEffect(() => {
     const load = async () => {
@@ -95,8 +97,8 @@ const PokeGrid = () => {
           })}
         </S.PokeWrapper>
         <S.Navigation>
-          {pages.previous && <S.PageLeft onClick={() => handlePages(false)} size="50px" />}
-          {pages.next && <S.PageRight onClick={() => handlePages(true)} size="50px" />}
+          {pages.previous && <S.PageLeft themeValue={state.theme} onClick={() => handlePages(false)} size="50px" />}
+          {pages.next && <S.PageRight themeValue={state.theme} onClick={() => handlePages(true)} size="50px" />}
         </S.Navigation>
       </S.Container>
     );

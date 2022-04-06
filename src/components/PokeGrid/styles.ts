@@ -1,6 +1,20 @@
 import styled from 'styled-components'
 import {FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight} from 'react-icons/fa'
 
+type Theme = {
+    light: {
+      colors: { primary: string, secondary: string, background: string };
+    };
+    dark: {
+      colors: { primary: string, secondary: string, background: string };
+    };
+  };
+  
+  interface iProps {
+    theme: Theme;
+    themeValue: keyof Theme;
+}
+
 export const Container = styled.div`
     display: flex;
     flex-flow: column nowrap;
@@ -24,7 +38,11 @@ export const Navigation = styled.div`
 
 export const PageRight = styled(FaRegArrowAltCircleRight)`
     cursor: pointer;
+    color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+    transition: all 1s ease-in-out;
 `
 export const PageLeft = styled(FaRegArrowAltCircleLeft)`
     cursor: pointer;
+    color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+    transition: all 1s ease-in-out;
 `

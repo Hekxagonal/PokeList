@@ -1,5 +1,19 @@
 import styled, { keyframes } from 'styled-components'
 
+type Theme = {
+    light: {
+      colors: { primary: string, secondary: string, background: string };
+    };
+    dark: {
+      colors: { primary: string, secondary: string, background: string };
+    };
+  };
+  
+  interface iProps {
+    theme: Theme;
+    themeValue: keyof Theme;
+}
+
 export const anim = keyframes`
  0%{ transform: rotate(0deg); }
 
@@ -38,15 +52,15 @@ export const PokeBallButton = styled.div`
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    border: 3px solid black;
-    border-top: 3px solid red;
+    border: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+    border-top: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary};
 
     ::after {
         position: absolute;
         width: 20px;
         height: 4px;
         content: '';
-        background: black;
+        background: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
         margin: 3px 0px 0px 11px;
     }
 
@@ -55,7 +69,7 @@ export const PokeBallButton = styled.div`
         width: 20px;
         height: 4px;
         content: '';
-        background: black;
+        background: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
         margin: 3px 0px 0px -22px;
     }
 `
@@ -64,6 +78,6 @@ export const PokeballBorder = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 3px solid black;
-    border-top: 3px solid red;
+    border: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};;
+    border-top: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary};;
 `
