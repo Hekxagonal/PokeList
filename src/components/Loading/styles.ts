@@ -14,14 +14,14 @@ export const anim = keyframes`
  20% { transform: rotate(-10deg); }
 
  25% { transform: rotate(40deg); }
- 30% { transform: rotate(80deg); }
+ 30% { transform: rotate(50deg); }
 
- 50% { transform: rotate(140deg); }
+ /* 50% { transform: rotate(160deg); } */
  100%{ transform: rotate(360deg); }
 `
 
 export const PokeBall = styled.div`
-    animation: ${anim} 2s linear infinite;
+    animation: ${anim} 2s ease-in-out infinite;
 `
 
 export const Container = styled.div`

@@ -1,14 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
+import Navbar from "./components/Navbar";
+import PokeGrid from "./components/PokeGrid";
+import { ThemeContextProvider } from "./contexts/theme";
+import GlobalStyles from "./global/styles";
+import theme from "./global/theme";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <ThemeContextProvider>
+        <GlobalStyles />
+        <Navbar />
+        <PokeGrid />
+      </ThemeContextProvider>
+    </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

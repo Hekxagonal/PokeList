@@ -1,7 +1,7 @@
 import Component from '.'
 
 export default {
-    title: 'Loading',
+    title: 'Simple Components/Loading',
     component: Component,
     args: {
         loadingState: { isError: false },
