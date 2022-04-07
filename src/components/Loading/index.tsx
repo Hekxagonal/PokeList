@@ -18,7 +18,7 @@ const Loading = ({ loadingState }: Component) => {
   if (!isError) {
     return (
       <S.Container>
-        <S.PokeBall>
+        <S.PokeBall data-testid="pokeball">
           <S.PokeballBorder themeValue={state.theme}>
             <S.PokeBallButton themeValue={state.theme}/>
           </S.PokeballBorder>
