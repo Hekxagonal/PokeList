@@ -11,14 +11,14 @@ const Navbar = () => {
     }
 
     return (
-        <S.Container themeValue={state.theme}>
+        <S.Container data-testid='container' themeValue={state.theme}>
         <S.ColumnLeft>
             <S.Title>PokeList </S.Title>
             <S.Name>by Flavio : )</S.Name>
         </S.ColumnLeft>
 
         <S.ColumnRight>
-            <S.PainterButton onClick={handleTheme} size="35px" />
+            <S.PainterButton data-testid='themeButton' onClick={handleTheme} size="35px" />
         </S.ColumnRight>
         </S.Container>
     );
