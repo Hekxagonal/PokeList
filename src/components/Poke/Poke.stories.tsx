@@ -1,55 +1,67 @@
-import Component from ".";
-import data from "./data"
+import Component from '.';
+import data from './data';
+
+import PokeDoc from './Poke-doc.mdx';
 
 export default {
-  title: "Simple Components/Pokemon",
+  title: 'Simple Components/Pokemon',
   component: Component,
-  args: {...data.glaceon},
-  argTypes: {
-    name: { type: "string" },
-    types: { type: "array" },
-    sprites: { type: "object" }
+  args: { ...data.glaceon, anim: 1 },
+  parameters: {
+    docs: {
+      page: PokeDoc,
+    },
   },
 };
 
-export const Glaceon = (args: any) => <Component {...args} />;
+interface PokeProps {
+  name: string;
+  types: string[];
+  sprites: {
+    front_default: string;
+    back_shiny: string;
+  };
+  anim: 1;
+}
 
-export const Lucario = (args: any) => <Component {...args} />;
+export const Glaceon = (args: PokeProps) => <Component {...args} />;
 
-Lucario.args = {...data.lucario}
+export const Lucario = (args: PokeProps) => <Component {...args} />;
 
-export const Charizard = (args: any) => <Component {...args} />;
+Lucario.args = { ...data.lucario };
 
-Charizard.args = {...data.charizard}
+export const Charizard = (args: PokeProps) => <Component {...args} />;
 
-export const Galvantula = (args: any) => <Component {...args} />;
+Charizard.args = { ...data.charizard };
 
-Galvantula.args = {...data.galvantula}
+export const Galvantula = (args: PokeProps) => <Component {...args} />;
 
-export const Sharpedo = (args: any) => <Component {...args} />;
+Galvantula.args = { ...data.galvantula };
 
-Sharpedo.args = {...data.sharpedo}
+export const Sharpedo = (args: PokeProps) => <Component {...args} />;
 
-export const Hydreigon = (args: any) => <Component {...args} />;
+Sharpedo.args = { ...data.sharpedo };
 
-Hydreigon.args = {...data.hydreigon}
+export const Hydreigon = (args: PokeProps) => <Component {...args} />;
 
-export const Mimikyu = (args: any) => <Component {...args} />;
+Hydreigon.args = { ...data.hydreigon };
 
-Mimikyu.args = {...data.mimikyu}
+export const Mimikyu = (args: PokeProps) => <Component {...args} />;
 
-export const Roselia = (args: any) => <Component {...args} />;
+Mimikyu.args = { ...data.mimikyu };
 
-Roselia.args = {...data.roselia}
+export const Roselia = (args: PokeProps) => <Component {...args} />;
 
-export const Meloetta = (args: any) => <Component {...args} />;
+Roselia.args = { ...data.roselia };
 
-Meloetta.args = {...data.meloetta}
+export const Meloetta = (args: PokeProps) => <Component {...args} />;
 
-export const NidoranF = (args: any) => <Component {...args} />;
+Meloetta.args = { ...data.meloetta };
 
-NidoranF.args = {...data.nidoranF}
+export const NidoranF = (args: PokeProps) => <Component {...args} />;
 
-export const Gigalith = (args: any) => <Component {...args} />;
+NidoranF.args = { ...data.nidoranF };
 
-Gigalith.args = {...data.gigalith}
+export const Gigalith = (args: PokeProps) => <Component {...args} />;
+
+Gigalith.args = { ...data.gigalith };

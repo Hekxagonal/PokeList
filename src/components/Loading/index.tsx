@@ -2,17 +2,13 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/theme";
 import * as S from "./styles";
 
-interface Component {
-  loadingState: {
-    isError: boolean;
-    error?: {
-      message: string;
-    };
-  };
+type Component = {
+    isError?: {
+        message: string;
+    }
 }
 
-const Loading = ({ loadingState }: Component) => {
-  const { isError, error } = loadingState;
+const Loading = ({ isError }: Component) => {
   const {state} = useContext(ThemeContext)
 
   if (!isError) {
@@ -28,7 +24,7 @@ const Loading = ({ loadingState }: Component) => {
   } else {
     return (
       <S.Container>
-        <h1>{error?.message}</h1>
+        <h1>{isError?.message}</h1>
       </S.Container>
     );
   }
