@@ -35,7 +35,7 @@ export const anim = keyframes`
 `
 
 export const PokeBall = styled.div`
-    animation: ${anim} 2s ease-in-out infinite;
+    animation: ${anim} 2.5s ease-in-out infinite;
 `
 
 export const Container = styled.div`

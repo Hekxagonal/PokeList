@@ -20,6 +20,6 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
       background: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.background};
-      transition: all 1s ease-in-out;
+      transition: background 1s ease-in-out;
     }
 `

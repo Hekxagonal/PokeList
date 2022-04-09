@@ -88,6 +88,7 @@ const PokeGrid = () => {
           {list.map((el, i) => {
             return (
               <PokeProfile
+                data-testid='pokeprofile'
                 key={i}
                 name={el.name}
                 types={handleTypes(el.types)}
