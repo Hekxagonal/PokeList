@@ -27,7 +27,6 @@ type Props = {
 
 const PokeGrid = ({ list, pages, isError } : Props) => {
   const {state} = useContext(ThemeContext)
-  console.log(list)
 
   const handleTypes = (rawTypes: iTypes) => {
     const result = [rawTypes[0].type.name, rawTypes[1]?.type.name];
