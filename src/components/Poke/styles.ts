@@ -1,12 +1,22 @@
-import styled, { keyframes } from "styled-components";
-import { css } from "styled-components";
+import styled, { keyframes } from 'styled-components';
+import { css } from 'styled-components';
 
 type Theme = {
   light: {
-    colors: { primary: string, secondary: string, background: string, box: string };
+    colors: {
+      primary: string;
+      secondary: string;
+      background: string;
+      box: string;
+    };
   };
   dark: {
-    colors: { primary: string, secondary: string, background: string, box: string };
+    colors: {
+      primary: string;
+      secondary: string;
+      background: string;
+      box: string;
+    };
   };
 };
 
@@ -24,7 +34,7 @@ export const animationDelay = keyframes`
 export const animationRed = keyframes`
     0% { filter: blur(1.5px) }
     100% { filter: blur(0px) }
-`
+`;
 
 export const Container = styled.div`
   background: white;
@@ -39,13 +49,15 @@ export const Container = styled.div`
   width: 195px;
   height: 70px;
   animation: ${({ anim }: iProps) => anim}s ease-out 0s 1 ${animationDelay};
-  background-color:${({ theme, themeValue }: iProps) => theme[themeValue].colors.box};
+  background-color: ${({ theme, themeValue }: iProps) =>
+    theme[themeValue].colors.box};
 `;
 
 export const PokeName = styled.h1`
   font-size: 15px;
-  color: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
-`
+  color: ${({ theme, themeValue }: iProps) =>
+    theme[themeValue].colors.secondary};
+`;
 
 export const TypesWrapper = styled.div`
   display: flex;
@@ -59,7 +71,7 @@ export const Type = styled.div`
   border-radius: 3px;
   font-size: 12px;
   color: white;
-  font-family: "Inconsolata", monospace;
+  font-family: 'Inconsolata', monospace;
   font-weight: bold;
   ${({ children }) => {
     switch (children) {
@@ -68,75 +80,75 @@ export const Type = styled.div`
           background: white;
           color: black;
         `;
-      case "BUG":
+      case 'BUG':
         return css`
           background: rgba(156, 178, 0, 1);
         `;
-      case "DARK":
+      case 'DARK':
         return css`
           background: rgba(75, 47, 29, 1);
         `;
-      case "DRAGON":
+      case 'DRAGON':
         return css`
           background: rgba(137, 76, 255, 1);
         `;
-      case "ELECTRIC":
+      case 'ELECTRIC':
         return css`
           background: rgba(251, 204, 0, 1);
         `;
-      case "FAIRY":
+      case 'FAIRY':
         return css`
           background: rgba(254, 158, 190, 1);
         `;
-      case "FIGHTING":
+      case 'FIGHTING':
         return css`
           background: rgba(205, 0, 0, 1);
         `;
-      case "FIRE":
+      case 'FIRE':
         return css`
           background: rgba(255, 142, 0, 1);
         `;
-      case "FLYING":
+      case 'FLYING':
         return css`
           background: rgba(161, 186, 249, 1);
         `;
-      case "GHOST":
+      case 'GHOST':
         return css`
           background: rgba(109, 85, 115, 1);
         `;
-      case "GRASS":
+      case 'GRASS':
         return css`
           background: rgba(96, 211, 117, 1);
         `;
-      case "GROUND":
+      case 'GROUND':
         return css`
           background: rgba(242, 218, 144, 1);
         `;
-      case "ICE":
+      case 'ICE':
         return css`
           background: rgba(149, 181, 237, 1);
         `;
-      case "NORMAL":
+      case 'NORMAL':
         return css`
           background: rgba(174, 151, 118, 1);
         `;
-      case "POISON":
+      case 'POISON':
         return css`
           background: rgba(159, 63, 169, 1);
         `;
-      case "PSYCHIC":
+      case 'PSYCHIC':
         return css`
           background: rgba(255, 107, 169, 1);
         `;
-      case "ROCK":
+      case 'ROCK':
         return css`
           background: rgba(206, 175, 78, 1);
         `;
-      case "STEEL":
+      case 'STEEL':
         return css`
           background: rgba(160, 159, 167, 1);
         `;
-      case "WATER":
+      case 'WATER':
         return css`
           background: rgba(113, 189, 255, 1);
         `;

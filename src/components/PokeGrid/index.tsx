@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../../contexts/theme";
-import Loading from "../Loading";
-import PokeProfile from "../Poke";
-import loadResults from "./load-results";
-import * as S from "./styles";
+import { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '../../contexts/theme';
+import Loading from '../Loading';
+import PokeProfile from '../Poke';
+import loadResults from './load-results';
+import * as S from './styles';
 
 type iList = Array<any>;
 
@@ -22,7 +22,7 @@ type iTypes = [
     type: {
       name: string;
     };
-  }?
+  }?,
 ];
 
 interface iPages {
@@ -32,7 +32,9 @@ interface iPages {
 }
 const PokeGrid = () => {
   const [list, setList] = useState<iList>([]);
-  const [currentPage, setCurrentPage] = useState('https://pokeapi.co/api/v2/pokemon/')
+  const [currentPage, setCurrentPage] = useState(
+    'https://pokeapi.co/api/v2/pokemon/',
+  );
   const [pages, setPages] = useState<iPages>({
     next: '',
     previous: '',
@@ -42,7 +44,7 @@ const PokeGrid = () => {
     isError: false,
     error: undefined,
   });
-  const {state} = useContext(ThemeContext)
+  const { state } = useContext(ThemeContext);
 
   useEffect(() => {
     const load = async () => {
@@ -66,15 +68,15 @@ const PokeGrid = () => {
     load();
   }, [currentPage]);
 
-  const handlePages = (value : boolean) => {
-    setList([])
+  const handlePages = (value: boolean) => {
+    setList([]);
     if (value) {
       setCurrentPage(pages.next);
-      return
+      return;
     }
     setCurrentPage(pages.previous);
-    return
-  }
+    return;
+  };
 
   const handleTypes = (rawTypes: iTypes) => {
     const result = [rawTypes[0].type.name, rawTypes[1]?.type.name];
@@ -88,7 +90,7 @@ const PokeGrid = () => {
           {list.map((el, i) => {
             return (
               <PokeProfile
-                data-testid='pokeprofile'
+                data-testid="pokeprofile"
                 key={i}
                 name={el.name}
                 types={handleTypes(el.types)}
@@ -99,8 +101,20 @@ const PokeGrid = () => {
           })}
         </S.PokeWrapper>
         <S.Navigation>
-          {pages.previous && <S.PageLeft themevalue={state.theme} onClick={() => handlePages(false)} size="50px" />}
-          {pages.next && <S.PageRight themevalue={state.theme} onClick={() => handlePages(true)} size="50px" />}
+          {pages.previous && (
+            <S.PageLeft
+              themevalue={state.theme}
+              onClick={() => handlePages(false)}
+              size="50px"
+            />
+          )}
+          {pages.next && (
+            <S.PageRight
+              themevalue={state.theme}
+              onClick={() => handlePages(true)}
+              size="50px"
+            />
+          )}
         </S.Navigation>
       </S.Container>
     );

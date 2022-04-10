@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/theme";
-import * as S from "./styles";
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/theme';
+import * as S from './styles';
 
 interface Component {
   loadingState: {
@@ -13,14 +13,17 @@ interface Component {
 
 const Loading = ({ loadingState }: Component) => {
   const { isError, error } = loadingState;
-  const {state} = useContext(ThemeContext)
+  const { state } = useContext(ThemeContext);
 
   if (!isError) {
     return (
       <S.Container>
         <S.PokeBall data-testid="pokeBall">
           <S.PokeballBorder data-testid="ballBorder" themeValue={state.theme}>
-            <S.PokeBallButton data-testid="ballButton" themeValue={state.theme}/>
+            <S.PokeBallButton
+              data-testid="ballButton"
+              themeValue={state.theme}
+            />
           </S.PokeballBorder>
         </S.PokeBall>
       </S.Container>
