@@ -5,13 +5,6 @@ import PokeProfile from '../Poke';
 import loadResults from './load-results';
 import * as S from './styles';
 
-type iList = Array<any>;
-
-interface iDefaultText {
-  isError: boolean;
-  error: { message: string } | undefined;
-}
-
 type iTypes = [
   {
     type: {
@@ -25,10 +18,12 @@ type iTypes = [
   }?,
 ];
 
-interface iPages {
-  next: string;
-  previous: string;
-  count: number;
+type Props = {
+    list: any[]
+    pages: {previous: boolean, next: boolean},
+    isError?: {
+        message: string
+    }
 }
 const PokeGrid = () => {
   const [list, setList] = useState<iList>([]);
@@ -83,7 +78,7 @@ const PokeGrid = () => {
     return result.filter((el) => (el ? true : false));
   };
 
-  if (list.length !== 0) {
+  if (!isError) {
     return (
       <S.Container>
         <S.PokeWrapper>
@@ -122,7 +117,7 @@ const PokeGrid = () => {
 
   return (
     <S.Container>
-      <Loading loadingState={loadingState} />
+      <Loading isError={isError} />
     </S.Container>
   );
 };
