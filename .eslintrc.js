@@ -33,6 +33,6 @@ module.exports = {
     'no-unused-vars': 'off',
     indent: ['off'],
     '@typescript-eslint/rule-name': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

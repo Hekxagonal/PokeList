@@ -1,10 +1,10 @@
 import { ThemeProvider } from 'styled-components';
 import theme from '../src/global/theme';
 import { ThemeContextProvider } from '../src/contexts/theme';
-import { AppProps } from 'next/app';
+//import { AppProps } from 'next/app';
 import GlobalStyles from '../src/global/styles';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
   return (
     <ThemeProvider theme={theme}>
       <ThemeContextProvider>

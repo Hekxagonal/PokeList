@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../contexts/theme';
 import Loading from '../Loading';
 import PokeProfile from '../Poke';
-import loadResults from './load-results';
+import loadResults from '../../utils/load-results';
 import * as S from './styles';
 
 type iTypes = [
@@ -17,25 +17,28 @@ type iTypes = [
     };
   }?,
 ];
-
-type Props = {
-    list: any[]
-    pages: {previous: boolean, next: boolean},
-    isError?: {
-        message: string
-    }
-}
 const PokeGrid = () => {
-  const [list, setList] = useState<iList>([]);
+  const [list, setList] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(
     'https://pokeapi.co/api/v2/pokemon/',
   );
-  const [pages, setPages] = useState<iPages>({
+  type Pages = {
+    next: string;
+    previous: string;
+    count: number;
+  };
+
+  const [pages, setPages] = useState<Pages>({
     next: '',
     previous: '',
     count: 0,
   });
-  const [loadingState, setLoadingState] = useState<iDefaultText>({
+  type LoadingState = {
+    isError: boolean;
+    error?: { message: string };
+  };
+
+  const [loadingState, setLoadingState] = useState<LoadingState>({
     isError: false,
     error: undefined,
   });
@@ -51,7 +54,7 @@ const PokeGrid = () => {
           previous: json.previous,
           count: json.count / 20,
         });
-        const results = json.results.map(async (el: Object) => {
+        const results = json.results.map(async (el: any) => {
           const poke = await loadResults(el);
           return poke;
         });
@@ -78,7 +81,7 @@ const PokeGrid = () => {
     return result.filter((el) => (el ? true : false));
   };
 
-  if (!isError) {
+  if (!loadingState.isError) {
     return (
       <S.Container>
         <S.PokeWrapper>
@@ -117,7 +120,7 @@ const PokeGrid = () => {
 
   return (
     <S.Container>
-      <Loading isError={isError} />
+      <Loading isError={loadingState.isError} error={loadingState.error} />
     </S.Container>
   );
 };
