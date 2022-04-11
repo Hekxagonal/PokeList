@@ -1,6 +1,5 @@
 import NavBar from '../src/components/Navbar';
 import PokeGrid from '../src/components/PokeGrid';
-import loadResults from '../src/utils/load-results';
 
 type HomeProps = {
     list: any[]
@@ -12,7 +11,7 @@ export default function Home({ list, pages, isError }: HomeProps) {
   return (
     <>
       <NavBar />
-      <PokeGrid list={list} pages={pages} isError={isError} />
+      <PokeGrid />
     </>
   );
 }

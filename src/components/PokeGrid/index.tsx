@@ -1,8 +1,9 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../contexts/theme";
-import Loading from "../Loading";
-import PokeProfile from "../Poke";
-import * as S from "./styles";
+import { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '../../contexts/theme';
+import Loading from '../Loading';
+import PokeProfile from '../Poke';
+import loadResults from './load-results';
+import * as S from './styles';
 
 type iTypes = [
   {
@@ -14,7 +15,7 @@ type iTypes = [
     type: {
       name: string;
     };
-  }?
+  }?,
 ];
 
 type Props = {
@@ -24,9 +25,53 @@ type Props = {
         message: string
     }
 }
+const PokeGrid = () => {
+  const [list, setList] = useState<iList>([]);
+  const [currentPage, setCurrentPage] = useState(
+    'https://pokeapi.co/api/v2/pokemon/',
+  );
+  const [pages, setPages] = useState<iPages>({
+    next: '',
+    previous: '',
+    count: 0,
+  });
+  const [loadingState, setLoadingState] = useState<iDefaultText>({
+    isError: false,
+    error: undefined,
+  });
+  const { state } = useContext(ThemeContext);
 
-const PokeGrid = ({ list, pages, isError } : Props) => {
-  const {state} = useContext(ThemeContext)
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await fetch(currentPage);
+        const json = await data.json();
+        setPages({
+          next: json.next,
+          previous: json.previous,
+          count: json.count / 20,
+        });
+        const results = json.results.map(async (el: Object) => {
+          const poke = await loadResults(el);
+          return poke;
+        });
+        Promise.all(results).then((result) => setList(result));
+      } catch (e: any) {
+        setLoadingState({ isError: true, error: e });
+      }
+    };
+    load();
+  }, [currentPage]);
+
+  const handlePages = (value: boolean) => {
+    setList([]);
+    if (value) {
+      setCurrentPage(pages.next);
+      return;
+    }
+    setCurrentPage(pages.previous);
+    return;
+  };
 
   const handleTypes = (rawTypes: iTypes) => {
     const result = [rawTypes[0].type.name, rawTypes[1]?.type.name];
@@ -40,7 +85,7 @@ const PokeGrid = ({ list, pages, isError } : Props) => {
           {list.map((el, i) => {
             return (
               <PokeProfile
-                data-testid='pokeprofile'
+                data-testid="pokeprofile"
                 key={i}
                 name={el.name}
                 types={handleTypes(el.types)}
@@ -51,8 +96,20 @@ const PokeGrid = ({ list, pages, isError } : Props) => {
           })}
         </S.PokeWrapper>
         <S.Navigation>
-          {pages.previous && <S.PageLeft themevalue={state.theme} size="50px" />}
-          {pages.next && <S.PageRight themevalue={state.theme} size="50px" />}
+          {pages.previous && (
+            <S.PageLeft
+              themevalue={state.theme}
+              onClick={() => handlePages(false)}
+              size="50px"
+            />
+          )}
+          {pages.next && (
+            <S.PageRight
+              themevalue={state.theme}
+              onClick={() => handlePages(true)}
+              size="50px"
+            />
+          )}
         </S.Navigation>
       </S.Container>
     );

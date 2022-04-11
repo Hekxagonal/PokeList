@@ -1,17 +1,17 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 type Theme = {
-    light: {
-      colors: { primary: string, secondary: string, background: string };
-    };
-    dark: {
-      colors: { primary: string, secondary: string, background: string };
-    };
+  light: {
+    colors: { primary: string; secondary: string; background: string };
   };
-  
-  interface iProps {
-    theme: Theme;
-    themeValue: keyof Theme;
+  dark: {
+    colors: { primary: string; secondary: string; background: string };
+  };
+};
+
+interface iProps {
+  theme: Theme;
+  themeValue: keyof Theme;
 }
 
 export const anim = keyframes`
@@ -32,52 +32,58 @@ export const anim = keyframes`
 
  /* 50% { transform: rotate(160deg); } */
  100%{ transform: rotate(360deg); }
-`
+`;
 
 export const PokeBall = styled.div`
-    animation: ${anim} 2.5s ease-in-out infinite;
-`
+  animation: ${anim} 2.5s ease-in-out infinite;
+`;
 
 export const Container = styled.div`
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-`
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const PokeBallButton = styled.div`
+  position: absolute;
+  top: 35.5%;
+  left: 39.5%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 3px solid
+    ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+  border-top: 3px solid
+    ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary};
+
+  ::after {
     position: absolute;
-    top: 35.5%;
-    left: 39.5%;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    border: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
-    border-top: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary};
+    width: 20px;
+    height: 4px;
+    content: '';
+    background: ${({ theme, themeValue }: iProps) =>
+      theme[themeValue].colors.secondary};
+    margin: 3px 0px 0px 11px;
+  }
 
-    ::after {
-        position: absolute;
-        width: 20px;
-        height: 4px;
-        content: '';
-        background: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
-        margin: 3px 0px 0px 11px;
-    }
-
-    ::before {
-        position: absolute;
-        width: 20px;
-        height: 4px;
-        content: '';
-        background: ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
-        margin: 3px 0px 0px -22px;
-    }
-`
+  ::before {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    content: '';
+    background: ${({ theme, themeValue }: iProps) =>
+      theme[themeValue].colors.secondary};
+    margin: 3px 0px 0px -22px;
+  }
+`;
 
 export const PokeballBorder = styled.div`
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};;
-    border-top: 3px solid ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary};;
-`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid
+    ${({ theme, themeValue }: iProps) => theme[themeValue].colors.secondary};
+  border-top: 3px solid
+    ${({ theme, themeValue }: iProps) => theme[themeValue].colors.primary}; ;
+`;

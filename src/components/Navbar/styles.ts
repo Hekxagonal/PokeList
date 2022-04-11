@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { BiPaintRoll } from "react-icons/bi";
+import { BiPaintRoll } from 'react-icons/bi';
 
 type Theme = {
   light: {
-    colors: { primary: string, secondary: string, background: string };
+    colors: { primary: string; secondary: string; background: string };
   };
   dark: {
-    colors: { primary: string, secondary: string, background: string };
+    colors: { primary: string; secondary: string; background: string };
   };
 };
 
