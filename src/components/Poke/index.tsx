@@ -13,7 +13,7 @@ interface Component {
   anim: number;
 }
 
-const PokeProfile = ({ name, types, sprites, anim }: Component) => {
+const Poke = ({ name, types, sprites, anim }: Component) => {
   const [animDelay] = useState(() => {
     if (anim === 0) return 0.1;
     return anim * 0.1;
@@ -34,4 +34,4 @@ const PokeProfile = ({ name, types, sprites, anim }: Component) => {
   );
 };
 
-export default PokeProfile;
+export default Poke;

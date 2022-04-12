@@ -3,7 +3,7 @@ import Component from './index';
 import renderTheme from '../../global/theme/render-theme';
 import formatName from './format';
 
-describe('<PokeProfile />', () => {
+describe('<Poke />', () => {
   const defaultValues = {
     name: 'glaceon',
     types: ['ice', 'fire'],
