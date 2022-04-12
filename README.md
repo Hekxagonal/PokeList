@@ -14,8 +14,9 @@ E uma Lista de Pokemons feita em React e NextJS, com o objetivo de estudar as du
 - [X] Troca de Temas
 - [X] Implementar NextJS
 - [X] Implementar Static Site Generation
-- [ ] Concertar a Paginação
+- [X] Concertar a Paginação
 - [ ] Implementar uma pagina para cada pokemon
+- [ ] Esta Pagina deve conseguir prever e todos os tipos, generos e sprites dos Pokemons
 - [ ] Implementar uma pesquisa
 - [ ] Implementar pesquisa por tipos
 - [ ] Implementar pesquisa por gerações
